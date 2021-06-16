@@ -1,29 +1,37 @@
-// Add your functions here
-// map functions
-const mapToNegativize = (arr, function) => {
-  return arr.map(item => item);
-};
-console.log(mapToNegativize([1, 2, 3, -9], function(a){ return a * a }));
+let theArray = [1,2,3];
 
-// function mapToNegativize(arr, function(a) {
-//   arr.map(item => item)
-// }, " Gary")
+function map(array,func){
+    let newArr = [];
 
-const mapToNoChange = (arr) => {
-  return arr.map(item => item);
-};
-console.log(mapToNoChange([1,2,3]));
+    for (let i=0;i < array.length;i++){
+        newArr.push(func(array[i]))
+    }
+    return newArr;
 
-const mapToDouble = (arr) => {
-  return arr.map(item => item * 2);
-};
-console.log(mapToDouble([1,2,3]));
+}
+    
+map(theArray,function(number){
+    return number * -1;
 
-const mapToSquare = (arr) => {
-  return arr.map(item => item * item);
-};
-console.log(mapToSquare([1,2,3]));
+}
+);
+map(theArray,function(number){
+   return number * 2;
+})
 
-
-
-
+function reduce(array, func, startingPoint = 0 ) {
+    let updatedResult = startingPoint
+    
+    for (let i=0;i < array.length;i++){
+        
+        if(array[i] === false){
+            updatedResult = false;
+            continue;
+        } else if (array[i] === true){
+            updatedResult = true;
+            continue;
+        }
+        updatedResult = func(array[i],updatedResult);
+    }
+  return updatedResult
+}
